@@ -1,0 +1,5 @@
+OS info is 
+uname_result(system='Darwin', node='MacBook-Pro-Igor.local', release='20.5.0', version='Darwin Kernel Version 20.5.0: Sat May  8 05:10:33 PDT 2021; root:xnu-7195.121.3~9/RELEASE_X86_64', machine='x86_64')
+
+Python version is 3.9.5 (v3.9.5:0a7dcbdb13, May  3 2021, 13:17:02) 
+[Clang 6.0 (clang-600.0.57)] ('64bit', '')
