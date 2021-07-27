@@ -1,11 +1,15 @@
 word = input('Введите слово: ')
-unic_count = 0
-for letter_1 in list(word):
-    count = 0
-    for letter_2 in list(word):
-        if letter_2 == letter_1:
-            count += 1
-    if count == 1:
-        unic_count += 1
+count = 0
+unic_letters = []
+cas_letters = []
+for letter in list(word):
+    if letter not in unic_letters and letter not in cas_letters:
+        unic_letters.append(letter)
+        count += 1
+    elif letter in unic_letters:
+        cas_letters.append(letter)
+        unic_letters.remove(letter)
+        count -= 1
 
-print('\nКоличество уникальных букв:', unic_count)
+print('\nКоличество уникальных букв:', count)
+print(unic_letters)
