@@ -1,6 +1,6 @@
 alphabet = 'abcdefg'
-
-print('1:', alphabet[:])
+alphabet_copy = alphabet[:]
+print('1:', alphabet_copy)
 print('2:', alphabet[::-1])
 print('3:', alphabet[::2])
 print('4:', alphabet[1::2])
