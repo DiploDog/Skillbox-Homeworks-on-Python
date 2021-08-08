@@ -1,1 +1,3 @@
-# TODO здесь писать код
+string = input('Введите строку: ')
+result = string.title()
+print('Результат:', result)
