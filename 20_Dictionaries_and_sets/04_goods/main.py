@@ -24,4 +24,19 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+for good in goods:
+
+    curr_good = goods.get(good)
+    summ_amount = 0
+    summ_price = 0
+
+    for value in store[curr_good]:
+        summ_amount += value.get('quantity')
+        summ_price += value.get('price') * value.get('quantity')
+
+    print('{label} - {quantity} шт, '
+          'стоимость {total_price} руб.'.format(
+        label=good,
+        quantity=summ_amount,
+        total_price=summ_price
+    ))

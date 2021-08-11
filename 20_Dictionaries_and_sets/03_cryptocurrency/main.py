@@ -22,7 +22,7 @@ data = {
             },
             "balance": 5000,
             "totalIn": 0,
-            "totalOut": 0
+            "total_out": 0
         },
         {
             "sec_token_info": {
@@ -44,5 +44,14 @@ data = {
     ]
 }
 
+for key in data:
+    print(key, ':', data.get(key))
 
-# TODO здесь писать код
+data['ETH']['total_diff'] = 100
+print(data)
+data['tokens'][0]['fst_token_info']['name'] = 'doge'
+print(data)
+data['ETH']['totalOut'] = data['tokens'][0].pop('total_out')
+print(data)
+data['tokens'][1]['sec_token_info']['total_price'] = data['tokens'][1]['sec_token_info'].pop('price')
+print(data)
