@@ -20,23 +20,20 @@ def site_maker(dct, prod):
                 sub_dct['title'] = 'Куплю/продам {product} недорого'.format(product=prod)
             if 'h2' in sub_dct.keys():
                 sub_dct['h2'] = 'У нас самая низкая цена на {product}'.format(product=prod)
+                break
             else:
                 site_maker(sub_dct, prod)
 
+    return dct
 
 
 sites_dict = dict()
 site_num = int(input('Сколько сайтов: '))
+
 for _ in range(site_num):
-    site_name = input('Введите название продукта для нового сайта: ')
-    if site_name not in sites_dict.keys():
-        sites_dict[site_name] = site
-    site_maker(sites_dict[site_name], site_name)
-    print(sites_dict)
+    site_name = input('\nВведите название продукта для нового сайта: ')
+    sites_dict[site_name] = site_maker(site, site_name)
 
-for key in sites_dict.keys():
-    print('\nСайт для {}:'.format(key))
-    print(sites_dict.get(key))
-
-
-
+    for key in sites_dict.keys():
+        print('\nСайт для {}:'.format(key))
+        print('site =', sites_dict.get(key))
