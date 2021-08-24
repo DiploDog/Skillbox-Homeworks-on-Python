@@ -13,27 +13,32 @@ def f2(x, y):
     return y / x
 
 
-try:
-    file = open('coordinates.txt', 'r')
+line_count = 0
+with open('coordinates.txt', 'r') as file:
     for line in file:
+        line_count += 1
+        func_num = 1
         nums_list = line.split()
-        res1 = f(int(nums_list[0]), int(nums_list[1]))
         try:
-            res2 = f2(int(nums_list[0]), int(nums_list[1]))
-            try:
-                number = random.randint(0, 100)
-                file_2 = open('result.txt', 'w')
-                my_list = sorted([res1, res2, number])
-                file_2.write(' '.join(my_list))
-            except Exception:
-                print("Что-то пошло не так")
-        except Exception:
-            print("Что-то пошло не так со второй функцией")
-        finally:
-            file.close()
-            file_2.close()
-except Exception:
-    print("Что-то пошло не так с первой функцией")
+            res1 = round(f(int(nums_list[0]), int(nums_list[1])), 1)
+            func_num += 1
+            res2 = round(f2(int(nums_list[0]), int(nums_list[1])), 1)
+            number = random.randint(0, 100)
+            my_list = sorted([res1, res2, number])
+            with open('result.txt', 'a') as file_2:
+                file_2.write('{} {} {}\n'.format(
+                    my_list[0],
+                    my_list[1],
+                    my_list[2]
+                ))
+                func_num = 1
+
+        except ZeroDivisionError:
+            with open('result.txt', 'a') as file_2:
+                file_2.write('Обнаружена попытка деления на ноль\n')
+            print('Ошибка! Обнаружена попытка деления на ноль в '
+                  '{} функции для чисел {} строки'.format(func_num, line_count))
 
 
-# TODO отредактировать и исправить программу
+with open('result.txt', 'a') as file_2:
+    file_2.write('\n')
